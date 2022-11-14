@@ -95,6 +95,7 @@ class App extends React.Component {
       },
       population: this.state.population
     };
+    
     return (
       <div>
         {Object.keys(obj).map(i => this.renderItem(obj[i]))}
