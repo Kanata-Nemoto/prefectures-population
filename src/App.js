@@ -36,8 +36,8 @@ class App extends React.Component {
         .then(response => response.json())
         .then(res => {
           let tmp = []; //人口データを入れる配列
-          res.result.data.data && Object.keys(res.result.data.data).forEach(i => {
-            tmp.push(res.result.data.data[i].value); //人口データの取得
+          Object.keys(res.result.data[0].data).forEach(i => {
+            tmp.push(res.result.data[0].data[i].value); //総人口データの取得
           });
           const res_population = {
             name: this.state.prefectures[index].prefName,
@@ -64,9 +64,9 @@ class App extends React.Component {
 
   renderItem(props) {
     return(
-      <div 
+      <div
+        className='pref-check'
         key={props.prefCode}
-        style={{ margin: '5px', display: 'inline-block' }}
       >
         <input 
           type='checkbox'
@@ -84,22 +84,29 @@ class App extends React.Component {
       title: {
         text: '都道府県別 人口推移'
       },
+      yAxis: {
+        title: {
+          text: '総人口'
+        }
+      },
       plotOptions: {
         series: {
           label: {
             connectorAllowed: false
           },
           pointInterval: 5,
-          pointStart: 1980
+          pointStart: 1960
         }
       },
-      population: this.state.population
+      series: this.state.population
     };
-    
+
     return (
       <div>
-        {Object.keys(obj).map(i => this.renderItem(obj[i]))}
-        <HighchartsReact highcharts={Highcharts} options={options} />
+        <h1 className='header'>ゆめみ フロントエンドコーディング試験</h1>
+        <h2 className='pref-title'>都道府県</h2>
+        <div className='prefectures'>{Object.keys(obj).map(i => this.renderItem(obj[i]))}</div>
+        <div className='highcharts'><HighchartsReact highcharts={Highcharts} options={options} /></div>
       </div>
     );
   }
