@@ -1,6 +1,7 @@
-html, body {
-    margin: 0;
-    padding: 0;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 .header {
@@ -18,98 +19,102 @@ html, body {
 }
 
 .prefectures {
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
 }
 
 .pref-check {
-    margin: 5px;
-    width: 140px;
-    font-size: 30px;
+  margin: 5px;
+  width: 140px;
+  font-size: 30px;
 }
 
 .highcharts {
-    max-width: 1200px;
-    margin: 5% auto;
-    padding: 0 3% 0 2%;
+  max-width: 1200px;
+  margin: 5% auto;
+  padding: 0 3% 0 2%;
 }
 
 .highcharts-title {
-    font-size: 28px !important;
-    font-weight: bold;
+  font-size: 28px !important;
+  font-weight: bold;
 }
 
 .highcharts-axis-title {
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 text {
-    font-size: 16px !important;
+  font-size: 16px !important;
 }
 
+/* break point 960px */
 @media (max-width: 960px) {
-    .header {
-        font-size: 26px;
-    }
-    
-    .pref-title {
-        font-size: 24px;
-        text-align: center;
-        margin: 15px 0 10px;
-    }
-    
-    .pref-check {
-        margin: 3px;
-        width: 100px;
-        font-size: 18px;
-    }
+  .header {
+    font-size: 26px;
+  }
 
-    .highcharts-title {
-        font-size: 20px !important;
-    }
-    
-    .highcharts-axis-title {
-        font-size: 14px !important;
-    }
-    
-    text {
-        font-size: 14px !important;
-    }
+  .pref-title {
+    font-size: 24px;
+    text-align: center;
+    margin: 15px 0 10px;
+  }
+
+  .pref-check {
+    margin: 3px;
+    width: 100px;
+    font-size: 18px;
+  }
+
+  .highcharts-title {
+    font-size: 20px !important;
+  }
+
+  .highcharts-axis-title {
+    font-size: 14px !important;
+  }
+
+  text {
+    font-size: 14px !important;
+  }
 }
+/* break point 960px */
 
+/* break point 520px */
 @media (max-width: 520px) {
-    .header {
-        font-size: 18px;
-        padding: 8px 0;
-    }
-      
-    .pref-title {
-        font-size: 14px;
-        margin: 10px 0 5px;
-    }
-    
-    .pref-check {
-        width: 70px;
-        font-size: 12px;
-    }
+  .header {
+    font-size: 18px;
+    padding: 8px 0;
+  }
 
-    .highcharts {
-        margin: 5% auto;
-        padding: 0;
-    }
-    
-    .highcharts-title {
-        font-size: 14px !important;
-    }
-    
-    .highcharts-axis-title {
-        font-size: 10px !important;
-    }
-    
-    text {
-        font-size: 8px !important;
-    }
+  .pref-title {
+    font-size: 14px;
+    margin: 10px 0 5px;
+  }
+
+  .pref-check {
+    width: 70px;
+    font-size: 12px;
+  }
+
+  .highcharts {
+    margin: 5% auto;
+    padding: 0;
+  }
+
+  .highcharts-title {
+    font-size: 14px !important;
+  }
+
+  .highcharts-axis-title {
+    font-size: 10px !important;
+  }
+
+  text {
+    font-size: 8px !important;
+  }
 }
+/* break point 520px */
