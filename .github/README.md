@@ -5,7 +5,7 @@
     <li>都道府県別の人口推移（1960 ～ 2045）を動的にグラフ化</li>
     <li>指定した都道府県のみの人口データで比較ができる</li>
 </ul>
-<a href="https://app.netlify.com/sites/prefectures-population-nemoto/overviewom/">アプリはこちら</a>
+<a href="https://prefectures-population-nemoto.netlify.app">アプリはこちら</a>
 <img src="https://user-images.githubusercontent.com/101101177/202116764-545df86f-a293-4160-95ed-d0cced3fb05b.png">
 
 <h2>作成背景</h2>
