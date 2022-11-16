@@ -5,7 +5,7 @@ body {
 }
 
 .header {
-  font-size: 44px;
+  font-size: 30px;
   text-align: center;
   background-color: azure;
   margin: 0;
@@ -13,7 +13,7 @@ body {
 }
 
 .pref-title {
-  font-size: 32px;
+  font-size: 28px;
   text-align: center;
   margin: 15px 0 10px;
 }
@@ -28,8 +28,8 @@ body {
 
 .pref-check {
   margin: 5px;
-  width: 140px;
-  font-size: 30px;
+  width: 120px;
+  font-size: 22px;
 }
 
 .highcharts {
