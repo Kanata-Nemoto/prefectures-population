@@ -1,6 +1,6 @@
 import React from "react";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
+import Checkbox from "./Checkbox";
+import Graph from "./Graph";
 
 class Main extends React.Component {
   constructor() {
@@ -13,7 +13,7 @@ class Main extends React.Component {
     this.changeSelected = this.changeSelected.bind(this);
   }
 
-  // RESASapiを用いて都道府県データを取得する
+  // RESASapiを用いて都道府県データを取得し、stateにセット
   componentDidMount() {
     fetch(
       // https://opendata.resas-portal.go.jp/docs/api/v1/prefectures.html より
@@ -22,14 +22,14 @@ class Main extends React.Component {
     )
       .then((response) => response.json())
       .then((res) => {
-        this.setState({ prefectures: res.result }); // state.prefectures にデータをセット
+        this.setState({ prefectures: res.result });
       });
   }
 
   // checkboxの値の変化を認識
   changeSelected(index) {
-    const selected_copy = this.state.selected.slice(); // selectedのコピーを作成
-    selected_copy[index] = !selected_copy[index]; // selected_copy の値を反転
+    const selected_copy = this.state.selected.slice();
+    selected_copy[index] = !selected_copy[index];
 
     // checkboxにチェックが付いた時の処理
     if (!this.state.selected[index]) {
@@ -43,7 +43,7 @@ class Main extends React.Component {
       )
         .then((response) => response.json())
         .then((res) => {
-          let tmp = []; // 総人口データを入れておく配列
+          let tmp = [];
           Object.keys(res.result.data[0].data).forEach((i) => {
             tmp.push(res.result.data[0].data[i].value); // 総人口データを年毎に受け取りtmpにpush
           });
@@ -52,8 +52,8 @@ class Main extends React.Component {
             data: tmp,
           };
           this.setState({
-            selected: selected_copy, // 反転したデータをselectedにセット
-            population: [...this.state.population, res_population], // 受け取った総人口データをpopulationにセット
+            selected: selected_copy,
+            population: [...this.state.population, res_population],
           });
         });
     } else {
@@ -73,54 +73,17 @@ class Main extends React.Component {
     }
   }
 
-  // checkboxと都道府県名の表示
-  renderItem(props) {
-    return (
-      <div className="pref-check" key={props.prefCode}>
-        <input
-          type="checkbox"
-          checked={this.state.selected[props.prefCode - 1]} //prefCode は 1~47, selected は [0]~[46]
-          onChange={() => this.changeSelected(props.prefCode - 1)}
-        />
-        {props.prefName}
-      </div>
-    );
-  }
-
-  // highcharts を用いてグラフの表示
   render() {
-    const obj = this.state.prefectures;
-    const options = {
-      // グラフオプションの設定
-      title: {
-        text: "都道府県別 人口推移", // グラフタイトル
-      },
-      yAxis: {
-        title: {
-          text: "総人口", // Y軸ラベル
-        },
-      },
-      plotOptions: {
-        series: {
-          label: {
-            connectorAllowed: false,
-          },
-          pointInterval: 5, // 5年区切りで表示
-          pointStart: 1960, // 1960年～
-        },
-      },
-      series: this.state.population, // グラフする総人口データ
-    };
     return (
-      <div>
-        <h2 className="pref-title">都道府県</h2>
-        <div className="prefectures">
-          {Object.keys(obj).map((i) => this.renderItem(obj[i]))}
-        </div>
-        <div className="highcharts">
-          <HighchartsReact highcharts={Highcharts} options={options} />
-        </div>
-      </div>
+      <main>
+        <Checkbox
+          selected={this.state.selected}
+          prefectures={this.state.prefectures}
+          population={this.state.population}
+          changeSelected={this.changeSelected}
+        />
+        <Graph population={this.state.population} />
+      </main>
     );
   }
 }
